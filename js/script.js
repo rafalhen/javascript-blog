@@ -44,3 +44,37 @@
     link.addEventListener('click', titleClickHandler);
   }
   
+  {
+  
+  const optArticleSelector = '.post',
+    optTitleSelector = '.post-title',
+    optTitleListSelector = '.titles';
+
+  function generateTitleLinks(){
+    /* remove contents of titleList */
+    const titleList = article.querySelector('optTitleListSelector').innerHTML = '';
+
+
+    /* for each article */
+    const articles = document.querySelectorAll('.post');
+
+    for(let article of articles){
+      article.classList.remove('article');
+    }
+
+    /* get the article id */
+    const articleId = Element.getAttribute('id')
+
+    /* find the title element */
+
+    /* get the title from the title element */
+
+    /* create html of the link */
+
+    /* insert link into titleList */
+
+  }
+
+  generateTitleLinks();
+
+  }
