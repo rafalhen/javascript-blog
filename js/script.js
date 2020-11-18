@@ -52,18 +52,21 @@
 
   function generateTitleLinks(){
     /* remove contents of titleList */
-    const titleList = article.querySelector('optTitleListSelector').innerHTML = '';
+    const titleList = document.querySelector(optArticleSelector).innerHTML = '';
+
+    console.log('optTitleListSelector');
 
 
     /* for each article */
-    const articles = document.querySelectorAll('.post');
+    const articles = document.querySelectorAll('optArticleSelector');
 
     for(let article of articles){
       article.classList.remove('article');
     }
 
     /* get the article id */
-    const articleId = Element.getAttribute('id')
+
+    const articleId = document.getAttribute('id')
 
     /* find the title element */
 
