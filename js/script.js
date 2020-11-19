@@ -85,6 +85,8 @@
       const postTitle = document.getElementById('h3');
       postTitle.insertAdjacentHTML("afterbegin", "<h3 class="post-title">Article2<h3>");
 
+      console.log(postTitle);
+
       /* insert link into titleList */ 
 
       html = html + linkHTML;
@@ -92,8 +94,6 @@
   }
   titleList.innerHTML = html;
 
-generateTitleLinks();
-
 }
-
+generateTitleLinks();
 }
