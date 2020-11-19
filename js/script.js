@@ -52,32 +52,48 @@
 
   function generateTitleLinks(){
     /* remove contents of titleList */
-    const titleList = document.querySelector(optArticleSelector).innerHTML = '';
+    /*const titleList = document.querySelector(optTitleListSelector).innerHTML = '';*/
 
-    console.log('optTitleListSelector');
+    /*console.log('optTitleListSelector');*/
 
 
     /* for each article */
-    const articles = document.querySelectorAll('optArticleSelector');
+    /*const articles = document.querySelectorAll(optArticleSelector);*/
+
+    
 
     for(let article of articles){
       article.classList.remove('article');
-    }
+    
+      let html = '';
+      /* get the article id */
 
-    /* get the article id */
+      const articleId = article.getAttribute('id')
 
-    const articleId = document.getAttribute('id')
+      /* find the title element */
 
-    /* find the title element */
+      const articleTitle = document.querySelector(optTitleSelector).innerHTML;
 
-    /* get the title from the title element */
+      /* get the title from the title element */
 
-    /* create html of the link */
+      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-    /* insert link into titleList */
+      console.log(linkHTML);
+    
+      /* create html of the link */
+
+      const postTitle = document.getElementById('h3');
+      postTitle.insertAdjacentHTML("afterbegin", "<h3 class="post-title">Article2<h3>");
+
+      /* insert link into titleList */ 
+
+      html = html + linkHTML;
 
   }
+  titleList.innerHTML = html;
 
-  generateTitleLinks();
+generateTitleLinks();
 
-  }
+}
+
+}
