@@ -1,3 +1,4 @@
+{
 'use strict';
 
   const titleClickHandler = function(event){
@@ -39,12 +40,13 @@
   }
   
   const links = document.querySelectorAll('.titles a');
+  console.log('links');
   
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
   
-  {
+
   
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
@@ -52,20 +54,16 @@
 
   function generateTitleLinks(){
     /* remove contents of titleList */
-    /*const titleList = document.querySelector(optTitleListSelector).innerHTML = '';*/
+    const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
 
     /*console.log('optTitleListSelector');*/
 
-
+    let html = '';
     /* for each article */
-    /*const articles = document.querySelectorAll(optArticleSelector);*/
-
-    
+    const articles = document.querySelectorAll(optArticleSelector);
 
     for(let article of articles){
-      article.classList.remove('article');
-    
-      let html = '';
+      
       /* get the article id */
 
       const articleId = article.getAttribute('id')
@@ -78,22 +76,32 @@
 
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
 
-      console.log(linkHTML);
+      console.log('linkHTML');
     
       /* create html of the link */
 
-      const postTitle = document.getElementById('h3');
+      /*const postTitle = document.getElementById('h3');
       postTitle.insertAdjacentHTML("afterbegin", "<h3 class="post-title">Article2<h3>");
 
-      console.log(postTitle);
+      console.log(postTitle);*/
 
       /* insert link into titleList */ 
 
       html = html + linkHTML;
 
-  }
-  titleList.innerHTML = html;
+      console.log('html');
 
-}
-generateTitleLinks();
+      } 
+
+    titleList.innerHTML = html;
+
+    /* insert link into titleList */
+    const links = document.querySelectorAll('.titles a');
+    for(let link of links) {
+      link.addEventListener('click', titleClickHandler);
+    }  
+  }
+  
+  generateTitleLinks();
+
 }
