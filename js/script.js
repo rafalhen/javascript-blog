@@ -45,13 +45,15 @@
 
   function generateTitleLinks(){
     /* remove contents of titleList */
-    const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
 
-    /*console.log('optTitleListSelector');*/
+    const titleList = document.querySelector(optTitleListSelector);
+    titleList.immerHTML = '';
 
-    let html = '';
+    console.log('optTitleListSelector');
+
     /* for each article */
     const articles = document.querySelectorAll(optArticleSelector);
+    let html = '';
 
     for(let article of articles){
       
@@ -70,13 +72,6 @@
       console.log('linkHTML');
     
       /* create html of the link */
-
-      /*const postTitle = document.getElementById('h3');
-      postTitle.insertAdjacentHTML("afterbegin", "<h3 class="post-title">Article2<h3>");
-
-      console.log(postTitle);*/
-
-      /* insert link into titleList */ 
 
       html = html + linkHTML;
 
