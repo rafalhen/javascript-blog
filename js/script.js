@@ -97,7 +97,7 @@
 
   function generateTags(){
     /* find all articles*/
-    const articles = document.querySelectorAll(optArticleTagsSelector);
+    const articles = document.querySelectorAll('.post');
     console.log(articles);
     /* START LOOP: for every article */
     for(let article of articles){
@@ -129,10 +129,12 @@
       
       }
 
+      tagWrapper.innerHTML = html;
+
       /* insert HTML of all the links into the tags wrapper */
-      const tagList = document.querySelectorAll('.tags');
-      for(let tag in tags) {
-        link.addEventListener('click', titleClickHandler);
+      const tagList = document.querySelectorAll('a[href^="#tag-"]');
+      for(let tag of tagList) {
+        tag.addEventListener('click', titleClickHandler);
       }
     /* END LOOP: for every article: */
 
