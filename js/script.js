@@ -45,6 +45,7 @@
       optArticleTagsSelector = '.post-tags .list';
       optArticleAuthorSelector = '.post-author';
       optTagListSelector = '.tag.list';
+      optAuthorListSelector = '.list.authors';
   
     const generateTitleLinks = function(customSelector = ''){
       /* remove contents of titleList */
@@ -144,7 +145,7 @@
         }
   
         /* insert HTML of all the links into the tags wrapper */
-        tagWrapper.innerHtml = html;
+        tagWrapper.innerHTML = html;
 
         const tagList = document.querySelectorAll('a[href^="#tag-"]');
         for(let tag of tagList) {
@@ -162,7 +163,7 @@
       /* "NEW" START LOOP: for each tag in allTags */
       for(let tag in allTags){
         /* "NEW" generate code of a link and add it to allTagsHTML */
-        allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+        allTagsHTML += '<a href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ') ' + '</a>';
       }
 
       /* "NEW" add HTML from allTagsHTML to tagList */
@@ -174,7 +175,7 @@
   
   /*tagClickHandler*/
   
-    function tagClickHandler(event){
+    const tagClickHandler = function(event){
       /* prevent default action for this event */
       event.preventDefault();
   
@@ -235,6 +236,10 @@
     /*authors*/
   
     const generateAuthors = function(){
+
+      /* "NEW" create a new variable allTags with an empty object */
+      let allAuthors = {};
+
       /* find all authors */
       const articles = document.querySelectorAll(optArticleSelector);
   
@@ -256,12 +261,35 @@
         
         /* add generate code to html variable */
         html = html + linkHTML;
+
+        /* "NEW" check if the link is not already in allAuthors */
+        if(!allAuthors[tagAuthor]) {
+          /* "NEW" add generated code to allAuthors array */
+          allAuthors[tagAuthor] = 1;
+        } else {
+          allAuthors[tagAuthor] ++;
+        }
   
-        /* insert html of all links into the tags wrapper */
-        authorWrapper.innerHTML = html;
+      /* insert html of all links into the tags wrapper */
+      authorWrapper.innerHTML = html;  
+        
       /* END LOOP for every article */
       }
-  
+
+      /* "NEW" find wrapper of authors in right column */
+      const authorLists = document.querySelector(optAuthorListSelector);
+      
+      /* "NEW" create variable for all links html code */
+      let allAuthorsHTML = '';
+
+      /* "NEW" START LOOP: for each author in allAuthors */
+      for(let author in allAuthors){
+        /* "NEW" generate code of a link and add it to allAuthorsHTML */
+        allAuthorsHTML += '<a href="#author-' + author + '">' + author + ' (' + allAuthors[author] + ')' + '</a>';
+      }
+
+      /* "NEW" add HTML from allAuthorsHTML to tagList */
+      authorLists.innerHTML = allAuthorsHTML
     }
     
     generateAuthors();
