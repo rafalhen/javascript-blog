@@ -44,7 +44,7 @@
       optTitleListSelector = '.titles';
       optArticleTagsSelector = '.post-tags .list';
       optArticleAuthorSelector = '.post-author';
-      optTagListSelector = '.tag.list';
+      optTagsListSelector = '.tags.list';
       optAuthorListSelector = '.list.authors';
       optCloudClassCount = 5;
       optCloudClassPrefix = 'tag-size-';
@@ -197,7 +197,7 @@
         /* "NEW" generate code of a link and add it to allTagsHTML */
         const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
         console.log('tagLinkHTML:', tagLinkHTML);
-        allTagsHTML +='<a href="#tag-' + calculateTagClass(allTags[tag], tagsParams) + '">' + calculateTagClass(allTags[tag], tagsParams) + ' (' + allTags[tag] + ') ' + '</a>';
+        allTagsHTML += '<li><a href="#tag-' + tag + '" class="'+ calculateTagClass(allTags[tag], tagsParams) +'">' + tag + '</a></li>';
 
       }
 
@@ -270,7 +270,7 @@
   
     /*authors*/
   
-    const generateAuthors = function(){
+    function generateAuthors(){
 
       /* "NEW" create a new variable allTags with an empty object */
       let allAuthors = {};
@@ -314,13 +314,14 @@
       /* "NEW" find wrapper of authors in right column */
       const authorLists = document.querySelector(optAuthorListSelector);
       
+      const tagsParams = calculateTagsParams(allAuthors);
       /* "NEW" create variable for all links html code */
       let allAuthorsHTML = '';
 
       /* "NEW" START LOOP: for each author in allAuthors */
       for(let author in allAuthors){
         /* "NEW" generate code of a link and add it to allAuthorsHTML */
-        allAuthorsHTML += '<a href="#author-' + author + '">' + author + ' (' + allAuthors[author] + ')' + '</a>';
+        allAuthorsHTML +='<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], tagsParams) + '">' + author + '</a></li>';
       }
 
       /* "NEW" add HTML from allAuthorsHTML to tagList */
@@ -354,14 +355,14 @@
       /* END LOOP for each active class link */
       }
       /* find all tag links with "href" attribute equal to the "href" constant */
-      const foundAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
-      console.log(foundAuthorLinks);
+      const findAuthorLinks = document.querySelectorAll('a[href="' + href + '"]');
+      console.log(findAuthorLinks);
   
       /* START LOOP for each found tag link */
-      for(let foundAuthorLink of foundAuthorLinks){
+      for(let findAuthorLink of findAuthorLinks){
   
         /* add class active */
-        foundAuthorLink.classList.add('active');
+        findAuthorLink.classList.add('active');
   
       /* END LOOP for each found tag link */
       }
