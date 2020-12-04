@@ -161,12 +161,12 @@
   
           /* generate HTML of the link */
 
-        //  const linkHTMLData = {id: articleTags, title: articleTags};
-        //  const linkHTML = templates.tagLink(linkHTMLData);
-        //  console.log(linkHTML);
+          const linkHTMLData = {id: articleTags, title: articleTags};
+          const linkHTML = templates.tagLink(linkHTMLData);
+          console.log(linkHTML);
 
           /* add generated code to html variable */
-        //  html = html + linkHTML;
+          html = html + linkHTML;
 
           /* "NEW" check if the link is NOT already in allTags */
           if(!allTags[tag]) {
