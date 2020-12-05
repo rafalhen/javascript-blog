@@ -161,7 +161,7 @@
   
           /* generate HTML of the link */
 
-          const linkHTMLData = {id: articleTags, title: articleTags};
+          const linkHTMLData = {id: tag, title: tag};
           const linkHTML = templates.tagLink(linkHTMLData);
           console.log(linkHTML);
 
@@ -306,7 +306,7 @@
   
         /* generate html of the link */
         //const linkHTML = '<li><a href="#author-' + tagAuthor + '">' + tagAuthor + '</a></li>'; 
-        const linkHTMLData = { id: tagAuthor, title: tagAuthor };
+        const linkHTMLData = { id: tagAuthor, title: tag };
         const linkHTML = templates.authorLink(linkHTMLData);
 
         /* add generate code to html variable */
