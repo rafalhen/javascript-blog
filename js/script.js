@@ -186,7 +186,7 @@
 
         const tagList = document.querySelectorAll('a[href^="#tag-"]');
         for(let tag of tagList) {
-          tag.addEventListener('click', titleClickHandler);
+          tag.addEventListener('click', tagClickHandler);
         }
       /* END LOOP: for every article: */
       }
@@ -221,7 +221,6 @@
 
     }
   
-    generateTags()
   
   /*tagClickHandler*/
   
@@ -280,7 +279,7 @@
       /* END LOOP: for each link */
       } 
     }
-  
+    generateTags()
     addClickListenersToTags();
   
     /*authors*/
@@ -340,7 +339,6 @@
       for(let author in allAuthors){
         /* "NEW" generate code of a link and add it to allAuthorsHTML */
       /*  allAuthorsHTML +='<li><a href="#author-' + author + '" class="' + calculateTagClass(allAuthors[author], tagsParams) + '">' + author + '</a></li>'; */
-        debugger
         allAuthorsData.authors.push({
           author: author,
           count: allAuthors[author],
